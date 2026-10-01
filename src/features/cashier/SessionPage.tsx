@@ -105,7 +105,32 @@ function IdentityStep({
       )}
       <div className={qr ? 'identity-qr-grid' : 'identity-grid'}>
         <div>
-          {manual && !qr ? (
+          {qr ? (
+            <dl className="details-list">
+              <div>
+                <dt>Nama</dt>
+                <dd>{customer.name}</dd>
+              </div>
+              <div>
+                <dt>Identitas</dt>
+                <dd>
+                  {customer.document === 'ktp' ? 'KTP' : 'Paspor'}{' '}
+                  {customer.identity}
+                  <Badge tone="success">terverifikasi</Badge>
+                </dd>
+              </div>
+              <div>
+                <dt>Jenis · risiko</dt>
+                <dd>{customer.nationality} · normal</dd>
+              </div>
+              <div>
+                <dt>Screening</dt>
+                <dd>
+                  <Badge tone="success">bersih</Badge>
+                </dd>
+              </div>
+            </dl>
+          ) : manual ? (
             <div className="form-grid">
               <TextField
                 label={customer.document === 'ktp' ? 'NIK' : 'Nomor paspor'}
@@ -194,15 +219,15 @@ function IdentityStep({
             </div>
             <div>
               <dt>Pemilik uang</dt>
-              <dd>Konfirmasi di HP pelanggan</dd>
+              <dd>ditanyakan di HP saat konfirmasi</dd>
             </div>
             <div>
-              <dt>Dokumen</dt>
-              <dd>Contoh data terverifikasi</dd>
+              <dt>Spesimen</dt>
+              <dd>siap untuk invoice</dd>
             </div>
             <div>
-              <dt>Invoice</dt>
-              <dd>Tersedia setelah transaksi selesai</dd>
+              <dt>Sesi</dt>
+              <dd>berlaku 08:31</dd>
             </div>
           </dl>
         ) : (
