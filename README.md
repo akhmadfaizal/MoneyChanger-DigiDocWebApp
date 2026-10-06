@@ -44,4 +44,12 @@ Mulai dengan **Proses A-07** untuk QR atau **Walk-in · KTP / paspor** untuk pel
 
 Seluruh data adalah fixture. Nominal, kurs, total, dan kembalian merupakan angka contoh yang sudah ditetapkan; tidak ada kalkulasi finansial, API, database, autentikasi, kamera, atau transaksi nyata. Perubahan hanya bertahan selama halaman terbuka, dan reset setelah refresh. Kasir dan tablet berbagi state pada tab yang sama; perangkat/tab berbeda belum tersinkronisasi. QR merupakan visual demo. Tanda tangan merupakan goresan lokal yang dibuang ketika layar dilepas; tidak menghasilkan dokumen bertanda tangan legal.
 
-Flow/layout mengikuti referensi Figma; 29 frame flow yang tersedia berupa gambar raster, sehingga layar dibangun kembali dengan elemen React interaktif dan token lampiran. Preview bukan salinan piksel persis. CI tersedia; deployment ke hosting belum dikonfigurasi.
+Flow/layout mengikuti referensi Figma; 29 frame flow yang tersedia berupa gambar raster, sehingga layar dibangun kembali dengan elemen React interaktif dan token lampiran. Preview bukan salinan piksel persis.
+
+## Deployment Vercel
+
+UI online: [moneychanger-digidocwebapp.vercel.app](https://moneychanger-digidocwebapp.vercel.app).
+
+`vercel.json` menetapkan Vite, `npm ci`, `npm run build`, dan output `dist`. Navigasi menggunakan hash sehingga tidak memerlukan rewrite SPA. `.vercelignore` mengecualikan file lokal, environment, dependencies, dan dokumen referensi dari upload; `.vercel` dan environment lokal tidak masuk Git.
+
+Deployment production pertama dilakukan melalui CLI pada scope `kaifazhe`. Setelah login dan linking project, perubahan dapat diunggah dengan `npx vercel deploy --prod --scope kaifazhe`. Koneksi GitHub otomatis belum berhasil, jadi push repository belum memicu deployment Vercel. Status dan prosedur lengkap dicatat di Obsidian **10 - Deployment Vercel**.
